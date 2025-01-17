@@ -42,8 +42,8 @@ class Job(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     status = Column(String, server_default="assigned")  # assigned, done, archived
-    report_id = Column(Integer, ForeignKey("reports.id"))
-    plumber_id = Column(Integer, ForeignKey("users.id"))
+    report_id = Column(Integer, ForeignKey("reports.id"), unique=True)
+    plumber_id = Column(Integer, ForeignKey("users.id"), unique=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 

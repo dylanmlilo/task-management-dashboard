@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import users, reports
+from app.routers import users, reports, jobs
 from app.database import engine, Base
 
 
@@ -16,3 +16,4 @@ def index():
 
 app.include_router(users.router)
 app.include_router(reports.router)
+app.include_router(jobs.router)

@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 from datetime import datetime
 
 
@@ -32,6 +33,7 @@ class ReportInput(BaseModel):
     type: str
     zone: str
     manager_id: int
+    status: Optional[str] = "active"
 
 
 class ReportResponse(BaseModel):
@@ -54,9 +56,10 @@ class ReportResponse(BaseModel):
 
 
 class JobInput(BaseModel):
-    status: str
     report_id: int
     plumber_id: int
+    status: Optional[str] = "assigned"
+    # status: Optional[str] = Field(default="assigned", regex="^(assigned|done|archived)$")
 
 
 class JobResponse(BaseModel):
